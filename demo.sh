@@ -21,15 +21,29 @@ if [[ -n "$APOLLO_PORTAL_DB_PASSWORD" ]]; then
   echo APOLLO_PORTAL_DB_PASSWORD = "${APOLLO_PORTAL_DB_PASSWORD//?/*}"
 fi
 
+if [[ -n "$APOLLO_DB_HOST" ]]; then
+  echo APOLLO_DB_HOST = "${APOLLO_DB_HOST//?/*}"
+fi
+
+if [[ -n "$APOLLO_DB_PORT" ]]; then
+  echo APOLLO_DB_PORT = "${APOLLO_DB_PORT//?/*}"
+fi
+
 # apollo config db info
-apollo_config_db_url="jdbc:mysql://localhost:3306/ApolloConfigDB?characterEncoding=utf8&serverTimezone=Asia/Shanghai"
+apollo_config_db_url="jdbc:mysql://${APOLLO_DB_HOST:-localhost}:${APOLLO_DB_PORT:-3306}/ApolloConfigDB?characterEncoding=utf8&serverTimezone=Asia/Shanghai"
+echo apollo_config_db_url: ${apollo_config_db_url}
 apollo_config_db_username=${APOLLO_CONFIG_DB_USERNAME:-root}
+echo apollo_config_db_username: ${apollo_config_db_username}
 apollo_config_db_password=${APOLLO_CONFIG_DB_PASSWORD:-}
+echo apollo_config_db_password: ${apollo_config_db_password}
 
 # apollo portal db info
-apollo_portal_db_url="jdbc:mysql://localhost:3306/ApolloPortalDB?characterEncoding=utf8&serverTimezone=Asia/Shanghai"
+apollo_portal_db_url="jdbc:mysql://${APOLLO_DB_HOST:-localhost}:${APOLLO_DB_PORT:-3306}/ApolloPortalDB?characterEncoding=utf8&serverTimezone=Asia/Shanghai"
+echo apollo_portal_db_url: ${apollo_portal_db_url}
 apollo_portal_db_username=${APOLLO_PORTAL_DB_USERNAME:-root}
+echo apollo_portal_db_username: ${apollo_portal_db_username}
 apollo_portal_db_password=${APOLLO_PORTAL_DB_PASSWORD:-}
+echo apollo_portal_db_password: ${apollo_portal_db_password}
 
 # =============== Please do not modify the following content =============== #
 
