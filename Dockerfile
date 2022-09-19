@@ -1,11 +1,11 @@
 # Dockerfile for apollo quick start
 # Build with:
-# docker build -t nobodyiam/apollo-quick-start .
+# docker build -t fengjx/apollo-quick-start:[version] .
 # Run with:
 # docker-compose up
 
 FROM openjdk:8-jre-alpine
-MAINTAINER nobodyiam<https://github.com/nobodyiam>
+LABEL maintainer="fengjx<https://github.com/fengjx>"
 
 COPY apollo-all-in-one.jar /apollo-quick-start/apollo-all-in-one.jar
 COPY client /apollo-quick-start/client
@@ -13,7 +13,7 @@ COPY demo.sh /apollo-quick-start/demo.sh
 COPY portal/apollo-portal.conf /apollo-quick-start/portal/apollo-portal.conf
 COPY service/apollo-service.conf /apollo-quick-start/service/apollo-service.conf
 
-EXPOSE 8070 8080
+EXPOSE 8070 8080 8090
 
 RUN echo "http://mirrors.aliyun.com/alpine/v3.6/main" > /etc/apk/repositories \
     && echo "http://mirrors.aliyun.com/alpine/v3.6/community" >> /etc/apk/repositories \

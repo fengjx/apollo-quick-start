@@ -1,8 +1,8 @@
-version: '2'
+version: '3'
 
 services:
   apollo-quick-start:
-    image: nobodyiam/apollo-quick-start
+    image: fengjx/apollo-quick-start
     container_name: apollo-quick-start
     depends_on:
       - apollo-db
@@ -12,7 +12,7 @@ services:
       - "8090:8090"
     links:
       - apollo-db
-    #environment:
+      #environment:
       #JAVA_OPTS: '-Xms100m -Xmx1000m -Xmn100m -Xss256k -XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=250m'
       #APOLLO_CONFIG_DB_USERNAME: 'root'
       #APOLLO_CONFIG_DB_PASSWORD: 'apollo'
