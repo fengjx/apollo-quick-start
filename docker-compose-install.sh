@@ -14,7 +14,7 @@ if [ ! -d "$configdb" ]; then
   curl -L https://raw.githubusercontent.com/fengjx/apollo-quick-start/dev/sql/apolloconfigdb.sql -o ${configdb}
 fi
 
-portaldb="sql/apolloconfigdb.sql"
+portaldb="sql/apolloportaldb.sql"
 if [ ! -d "$portaldb" ]; then
   echo "下载 ${portaldb}"
   curl -L https://raw.githubusercontent.com/fengjx/apollo-quick-start/dev/sql/apolloportaldb.sql -o ${portaldb}
