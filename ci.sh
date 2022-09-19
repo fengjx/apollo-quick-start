@@ -17,14 +17,14 @@ VERSION=${2:-latest}
 build_docker() {
     echo '镜像构建开始 ${VERSION}'
     export DOCKER_SCAN_SUGGEST=false
-    docker build -t fengjx/apollo-quick-start:${VERSION} .
+    sudo docker build -t fengjx/apollo-quick-start:${VERSION} .
     echo '镜像构建结束'
 }
 
 docker_compose() {
     build_docker
     echo 'docker compose up'
-    docker compose up -d
+    sudo docker compose up -d
 }
 
 case_opt=$1

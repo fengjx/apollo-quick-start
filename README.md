@@ -35,6 +35,6 @@ docker compose up -d
 2. 一键安装
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fengjx/apollo-quick-start/master/docker-compose-install.sh.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/fengjx/apollo-quick-start/master/docker-compose-install.sh)"
 ```
 
