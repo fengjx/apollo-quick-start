@@ -42,7 +42,7 @@ SHOW VARIABLES WHERE Variable_name = 'version';
 ```
 
 | Variable_name | Value  |
-|---------------|--------|
+| ------------- | ------ |
 | version       | 5.7.11 |
 
 ## 1.3 下载Quick Start安装包
@@ -85,9 +85,9 @@ source /your_local_path/sql/apolloportaldb.sql
 select `Id`, `AppId`, `Name` from ApolloPortalDB.App;
 ```
 
-| Id | AppId     | Name       |
-|----|-----------|------------|
-| 1  | SampleApp | Sample App |
+| Id  | AppId     | Name       |
+| --- | --------- | ---------- |
+| 1   | SampleApp | Sample App |
 
 ### 2.1.2 创建ApolloConfigDB
 通过各种MySQL客户端导入[sql/apolloconfigdb.sql](https://github.com/apolloconfig/apollo-build-scripts/blob/master/sql/apolloconfigdb.sql)即可。
@@ -102,7 +102,7 @@ source /your_local_path/sql/apolloconfigdb.sql
 select `NamespaceId`, `Key`, `Value`, `Comment` from ApolloConfigDB.Item;
 ```
 | NamespaceId | Key     | Value | Comment            |
-|-------------|---------|-------|--------------------|
+| ----------- | ------- | ----- | ------------------ |
 | 1           | timeout | 100   | sample timeout配置 |
 
 ## 2.2 配置数据库连接信息
@@ -248,3 +248,17 @@ Apollo Config Demo. Please input key to get the value. Input quit to exit.
 app.id=你的appId
 ```
 运行`./demo.sh client`启动Demo客户端即可。
+
+## docker 方式启动
+
+```bash
+docker run -d --name apollo \
+-p 8088:8080 \
+-p 8070:8070 \
+-p 8090:8090 \
+-e APOLLO_DB_HOST="mysql-server-host" \
+-e APOLLO_DB_PORT="3306" \
+-e APOLLO_CONFIG_DB_USERNAME="root" \
+-e APOLLO_PORTAL_DB_USERNAME="root" \
+fengjx/apollo-quick-start
+```
