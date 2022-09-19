@@ -32,4 +32,4 @@ services:
       - "13306:3306"
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
-      - mysql:/var/lib/mysql
+      - ./mysql:/var/lib/mysql

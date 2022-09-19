@@ -27,3 +27,4 @@ apollo-service.jar
 *.log
 *.gz
 *.pid
+mysql
