@@ -9,13 +9,13 @@ if [ ! -f "$compose_file" ]; then
 fi
 
 configdb="sql/apolloconfigdb.sql"
-if [ ! -d "$configdb" ]; then
+if [ ! -f "$configdb" ]; then
   echo "下载 ${configdb}"
   curl -L https://raw.githubusercontent.com/fengjx/apollo-quick-start/dev/sql/apolloconfigdb.sql -o ${configdb}
 fi
 
 portaldb="sql/apolloportaldb.sql"
-if [ ! -d "$portaldb" ]; then
+if [ ! -f "$portaldb" ]; then
   echo "下载 ${portaldb}"
   curl -L https://raw.githubusercontent.com/fengjx/apollo-quick-start/dev/sql/apolloportaldb.sql -o ${portaldb}
 fi
