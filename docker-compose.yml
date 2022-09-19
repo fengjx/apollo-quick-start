@@ -1,9 +1,10 @@
-version: '2'
+version: '3'
 
 services:
   apollo-quick-start:
     image: fengjx/apollo-quick-start
     container_name: apollo-quick-start
+    restart: always
     depends_on:
       - apollo-db
     ports:
@@ -12,31 +13,23 @@ services:
       - "8090:8090"
     links:
       - apollo-db
-      #environment:
+    environment:
       #JAVA_OPTS: '-Xms100m -Xmx1000m -Xmn100m -Xss256k -XX:MetaspaceSize=10m -XX:MaxMetaspaceSize=250m'
       #APOLLO_CONFIG_DB_USERNAME: 'root'
-      #APOLLO_CONFIG_DB_PASSWORD: 'apollo'
+      APOLLO_CONFIG_DB_PASSWORD: '1234'
       #APOLLO_PORTAL_DB_USERNAME: 'root'
-      #APOLLO_PORTAL_DB_PASSWORD: 'apollo'
+      APOLLO_PORTAL_DB_PASSWORD: '1234'
 
   apollo-db:
-    image: mysql:5.7
+    image: mysql:5.7.39
     container_name: apollo-db
+    restart: always
     environment:
       TZ: Asia/Shanghai
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      #MYSQL_ROOT_PASSWORD: 'apollo'
-    depends_on:
-      - apollo-dbdata
+      # MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD: '1234'
     ports:
       - "13306:3306"
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
-    volumes_from:
-      - apollo-dbdata
-
-  apollo-dbdata:
-    image: alpine:latest
-    container_name: apollo-dbdata
-    volumes:
-      - /var/lib/mysql
+      - mysql:/var/lib/mysql
